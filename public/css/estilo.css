@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+/* ---------------------------- Estilos + Navbar*/
+
+.minha-nav h4{
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+    margin-left: 10px;
+}
+
+.minha-nav{
+    background:black;
+    display: block;
+    margin-bottom: 15px;
+    padding-top: 2px;
+
+}
+
+.img-icone{
+    margin: 0;
+    padding: 0;
+}
+
+.color-t{
+    color:FFD57E;
+}
+.minha-nav-link{
+    margin-right: 10px;
+    padding-top: 12px;;
+    
+    display: inline-block;
+    float: right;
+}
+
+.minha-nav a{
+    color: #FFD57E;
+}
+
+.minha-nav a:hover{
+    text-decoration: none;
+    color: white;
+    transition: 0.4;
+}
+
+.minha-nav-link:visited{
+    color: #FFD57E;
+}
+
+/* ---------------------------- Estilos + Formulário CEP*/
+.minha-div-cep{
+    display: block;
+    margin-bottom: 40px;
+    padding: 10px;
+
+}
+.cep-titulo{
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.img-cep{
+    display: inline-block;
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+.cep-titulo h4{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    vertical-align: bottom;
+}
+
+.meu-cep{
+    display: block;
+    margin: 0;
+    padding: 10px;
+    border: 1px black solid;
+}
+
+.meu-cep input[type=text]{
+    border: 1px solid;
+    border-radius: 4px;
+}
+
+.btn-busca-cep{
+    border: none;
+    padding: 2px 6px;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background: #FFD57E;
+}
+
+.btn-busca-cep:hover{
+    border: none;
+    font-weight: 600;
+}
+
+.img-buscar{
+    display: inline-block;
+    
+    margin: 0;
+    padding-right: 4px;
+}
+
+.input-size{
+    width: 100%;
+}
+
+.div-concluir{
+    display: inline-block;
+    margin-top: 15px;
+    padding: 0px;
+
+}
+
+.img-man{
+    display: inline-block;
+    float: left;
+    margin: 10px;
+    padding: 0;
+}
+
+#titulo-dinamico h5{
+    margin-left: 80px;
+}
+
+.show{
+    display: none;
+}
+
+.back-image{
+    display: inherit;
+    float: right;
+    padding-right: 50px; 
+    padding-top: 50px;
+}
