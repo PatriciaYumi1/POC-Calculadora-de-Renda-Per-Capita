@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    alert("Página carregada");
+    console.log("Página carregada com sucesso!");
+
     var cont = 1;
     var index = 1;
     var indexA = 1;
-
 
     // Chama função para adicionar uma nova pessoa no grupo familiar
     $("#btnCEP").click(function() {
@@ -16,16 +16,22 @@ $(document).ready(function() {
         inserirMembro(cont);
     });
 
+    // Chama função para remover uma pessoa do grupo familiar
+    $("#remImput").click(function() {
+        removerMembro($(this));
+    });
+
     // Enviar formulário para fazer o cálculo da renda
     $("#dadosForm").click(function() {
+        // Verifica se algum dos campos obrigatórios está vazio
         var check = verificaVazios(index, indexA);
 
         if (check != 0){
             alert("Favor preencher todos os campos obrigatórios! ");
-        }else{
-            console.log("Formulário pronto para envio!");
-            enviarForm();
-        }                      
+        }else{ 
+                console.log("Formulário pronto para envio!");
+                enviarForm();
+        }                    
     });
 
 });
@@ -58,14 +64,14 @@ function procurarCEP(){
             alert(erro.message);
         },
         uploadProgress: function(e, position, valortotal, complete) {
-            // barra de carregamento
+            // Barra de carregamento
         }
     };
 
     // Submete o formulário - método POST
     $("#formCEP").ajaxSubmit(options);
 }
-/* --------------------------------- /Procurar CEP ----------------------------------- */
+/* ----------------------------------------------------------------------------------- */
 
 /* ------------------- Adicionar uma nova pessoa no grupo familiar ------------------- */
 function inserirMembro(a){
@@ -73,50 +79,46 @@ function inserirMembro(a){
     // Variável armazena o número do novo membro inserido
     var title = ("Membro "+a);
 
-    // Adiciona form de novo membro para preenchimento
+    // Adiciona dinamicamente form de novo membro para preenchimento
     $(  "<hr>"+"<img src="+"img/icons8-standing-man-64.png"+" class="+"img-man"+">"+
-        "<div class="+"container"+" id="+"titulo-dinamico"+"><h5>"+title+"</h5></div>"+
+        "<div class="+"container"+" id="+"titulo-dinamico"+">"+"<div class="+"text-left"+">"+"<h5>"+title+"</h5></div></div>"+
         
         "<div class="+"row"+">"+
             "<div class="+"col-md-2"+"><label for="+"nome"+">Nome Completo</label></div>"+
-            "<div class="+"col-md-7"+"><input type="+"text"+" name="+"nome"+ " id="+"nome"+ " class="+"input-size"+"></div>"+
+            "<div class="+"col-md-10"+"><input type="+"text"+" name="+"nome"+ " id="+"nome"+ " class="+"input-size"+"></div>"+
             "</div> <!-- Fim row-->"+
         
-        "<div class="+"row"+">"+
-                     
+        "<div class="+"row"+">"+  
             "<div class="+"col-md-2"+">"+
-                "<label for="+"salBruto"+">Salário Bruto (R$)</label></div>"+
+                "<label for="+"salBruto"+">Salário Bruto (R$)<span class="+"obrigatorio"+">*</span></label></div>"+
 
             "<div class="+"col-md-3"+">"+
                 "<input type="+"text"+" name="+"salBruto"+" id="+"salBruto"+" class="+"input-size"+"></div>"+
 
             "<div class="+"col-md-3"+">"+
-                "<label for="+"dependente"+">Quantidade de Dependentes</label></div>"+
+                "<label for="+"dependente"+">Quantidade de Dependentes<span class="+"obrigatorio"+">*</span></label></div>"+
 
             "<div class="+"col-md-1"+">"+
                 "<input type="+"text"+" name="+"dependente"+" id="+"dependente"+" class="+"input-size"+"></div>"+
 
-            "<div class="+"col-md-1"+">"+
+            "<div class="+"col-md-3"+">"+"<div class="+"text-right"+">"+
                 "<button type="+"button"+" id="+"remImput"+" class="+"btn-busca-cep"+">Remover</button></div>"+
-
-            "</div><!-- Fim row--></div>"
+        "</div></div><!-- Fim row--></div>"
     ).appendTo("#dynamicDiv");
 
     console.log("Novo membro adicionado. Total de pessoas: "+a+".");
 
     return false;
 }
-/* ------------------ /Adicionar uma nova pessoa no grupo familiar ------------------- */
+/* ----------------------------------------------------------------------------------- */
 
-// Remover uma nova pessoa no grupo familiar
-function removerMembro(){
-    /*$(document).on("click", "#"+removeBtn, function() {
-            $(this).parents('p').remove();
-            return false;
-        });*/
+/* ------------------- Remover uma nova pessoa no grupo familiar --------------------- */
+function removerMembro(b){
+    alert("Funcionalidade ainda não implementada!");
 }
+/* ----------------------------------------------------------------------------------- */
 
-/* ----------------------- Verifica campos vazios no formulário ----------------------- */
+/* ---------------------- Verifica campos vazios no formulário ----------------------- */
 function verificaVazios(i, j){
     // Transforma o formulário CEP em array
     var fatEndereco = $("#formCEP").serializeArray();
@@ -148,6 +150,11 @@ function verificaVazios(i, j){
             console.log("O campo "+fatEndereco[m].name+" está vazio!");
             i = 1;
             break;
+        }
+        else if (fatEndereco[m].name == "Numero" && fatEndereco[m].value === ""){
+            console.log("O campo "+fatEndereco[m].name+" está vazio!");
+            i = 1;
+            break;
         }else{
             i = 0;
         }
@@ -170,9 +177,9 @@ function verificaVazios(i, j){
     return i+j;
     
 }
-/* ---------------------- /Verifica campos vazios no formulário ----------------------- */
+/* ----------------------------------------------------------------------------------- */
 
-/* -------------- Envia dados para fazer o cálculo da renda per capita -------------- */
+/* -------------- Envia dados para fazer o cálculo da renda per capita --------------- */
 function enviarForm() {
 
     console.log("Calculando a renda...");
@@ -182,14 +189,16 @@ function enviarForm() {
             // Converte os dados enviados em JSON pelo backend
             var dados = jQuery.parseJSON(JSON.stringify(data));
 
-            $( ".show" ).css({display: "block"});
+            // Exibe div com os resultados
+            $( ".show" ).css({display: "inline-block"});
 
+            // Escreve o endereço na tela
             exibeEndereco();
 
-            $("<span>Cada integrante da sua família recebe o equivalente a "+dados.Salarios+" salários mínimos.</span>").appendTo("#results-salarios");
+            // Escreve a quantidade de salários por pessoa na tela
+            $("<h5>Cada integrante da sua família recebe o equivalente a "+dados.Salarios+" salários mínimos.</h5>").appendTo("#results-salarios");
 
             // Lista os membros da família e a renda de cada um 
-            
             for (var i = 0; i < dados.Nome.length; i++){
                 if (dados.Nome[i] !== "")
                     $("<tr>"+
@@ -198,7 +207,7 @@ function enviarForm() {
                     "<td>"+dados.RPC+"</td>"+
                     "<td>"+dados.Dependentes[i]+"</td>"+
                     "</tr>").appendTo("#tabela-dinamina");     
-                else
+                else //se o nome
                     $("<tr>"+
                     "<td>"+i+"</td>"+ 
                     "<td>Membro "+i+"</td>"+
@@ -217,17 +226,17 @@ function enviarForm() {
     };
     
     // Submete o formulário - método POST
-        $("#formFamilia" ).ajaxSubmit(options);
-    
+    $("#formFamilia").ajaxSubmit(options);
 }
-/* ------------- /Envia dados para fazer o cálculo da renda per capita -------------- */
+/* ----------------------------------------------------------------------------------- */
 
+/* -------------------------------- Mostra Endereço ---------------------------------- */
 function exibeEndereco(){
-    
+    // Converte formulário para array
     var arrayEndereco = $("#formCEP").serializeArray();
     console.log(arrayEndereco);
 
-    
-    
-    $("<span> "+ arrayEndereco[1].value+", "+arrayEndereco[2].value+" - CEP: "+arrayEndereco[0].value+" / "+arrayEndereco[3].value+" ("+arrayEndereco[4].value+") </span>").appendTo("#results-endereco");
+    // Escreve endereço na tela
+    $("<p> A renda foi calculada para os residentes do lar localizado no endereço "+ arrayEndereco[1].value+", nº "+arrayEndereco[2].value+", "+arrayEndereco[3].value+" - CEP: "+arrayEndereco[0].value+" / "+arrayEndereco[4].value+" ("+arrayEndereco[4].value+") </p>").appendTo("#results-endereco");
 }
+/* ----------------------------------------------------------------------------------- */

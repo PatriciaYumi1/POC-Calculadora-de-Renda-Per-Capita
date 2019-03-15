@@ -9,7 +9,6 @@
 
     <!-- [CSS] Bootstrap-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
     <!-- [CSS] Autoria-->
@@ -17,7 +16,6 @@
 </head>
 
 <body>
-    
     <!-- Navbar-->
     <nav>
         <div class="container-fluid minha-nav">
@@ -25,16 +23,15 @@
             <a href="index.html"><img src="img/icons8-carteira-de-investimentos-42.png" class="img-icone"></a>
             <h4 class="">Calculadora de <span class="color-t">R</span>enda <span class="color-t">P</span>er <span class="color-t">C</span>apita</h4>
 
-            <a href="#" class="minha-nav-link">Ajuda</a>
+            <!--<a href="#" class="minha-nav-link">Ajuda</a>-->
         </div>
     </nav>
 
-    <img src="img/boneco_jornada_regular.png" class="back-image">
     <!-- ------------------------------------------------------- -->
     <!--                                        Formulário de CEP-->
-    <div class="container-fluid minha-div-cep">
+    <div class="container-fluid minha-div-cep text-center">
 
-        <div class="cep-titulo">
+        <div class="container-fluid cep-titulo">
             <img src="img/icons8-1-circulado-26.png" class="img-cep">
             <h4>Endereço</h4>
         </div>
@@ -44,56 +41,64 @@
             <div class="meu-cep container">
                 <div class="row">
 
-                    <div class="col-md-1 meu-label">
-                        <label for="cep">CEP</label>
+                    <div class="col-md-1">
+                        <label for="cep">CEP<span class="obrigatorio">*</span></label>
                     </div>
 
-                    <div class="col-md-8">
-                        <input type="text" name="CEP" id="cep">
-                        <button type="button" id="btnCEP" class="btn-busca-cep"><img src="img/icons8-pesquisar-12.png" class="img-buscar">Buscar</button>
+                    <div class="col-md-2">
+                        <input type="text" name="CEP" id="cep" class="input-size">
                      </div>
-                 </div> <!-- Fim row-->
-            </div> <!-- Fim container 1 -->
+                     
+                     
+                            <button type="button" id="btnCEP" class="btn-busca-cep"><img src="img/icons8-pesquisar-12.png" class="img-buscar">Buscar</button>
+                     
 
-            <div class="meu-cep container">
+                 </div> <!-- Fim row-->
+
                 <div class="row">
 
                     <div class="col-md-1">
-                        <label for="logradouro">Logradouro</label>
+                        <label for="logradouro">Logradouro<span class="obrigatorio">*</span></label>
                      </div>
 
                     <div class="col-md-6">
                         <input type="text" name="Logradouro" id="logradouro" class="input-size">
                     </div>
-                
-                    <div class="col-md-1 meu-label">
-                        <label for="bairro">Bairro</label>
+          
+                    <label for="Numero">Nº<span class="obrigatorio">*</span></label>
+    
+                    <div class="col-md-1">
+                        <input type="text" name="Numero" id="numero" class="input-size">
                     </div>
-
-                    <div class="col-md-4">
+                               
+                    <label for="bairro">Bairro<span class="obrigatorio">*</span></label>
+                    
+                    <div class="col-md-3">
                         <input type="text" name="Bairro" id="bairro" class="input-size">
                     </div>
+
                 </div> <!-- Fim row-->
 
                <div class="row">
 
                    <div class="col-md-1 meu-label">
-                        <label for="localidade">Cidade</label>
+                        <label for="localidade">Cidade<span class="obrigatorio">*</span></label>
                     </div>
 
                     <div class="col-md-4">
                         <input type="text" name="Cidade" id="localidade" class="input-size">
                     </div>
 
-                    <div class="col-md-1 meu-label">
-                        <label for="uf">UF</label>
+                    <div class="col-md-1">
+                        <label for="uf">UF<span class="obrigatorio">*</span></label>
                     </div>
 
                     <div class="col-md-1">
                         <input type="text" name="UF" id="uf" class="input-size">
                     </div>
+                    
                 </div> <!-- Fim row-->
-            </div> <!-- Fim container 2 -->
+            </div> <!-- Fim container -->
             
         </form> <!-- Fim #formCEP -->
 
@@ -104,103 +109,115 @@
 
     <!-- ------------------------------------------------------- -->
     <!--                                    Formulário da Família-->
-    <div class="container-fluid minha-div-cep">
+    <div class="container-fluid minha-div-cep text-center">
 
-        <div class="cep-titulo">
+        <div class="container-fluid cep-titulo">
             <img src="img/icons8-2-circulado-c-26.png" class="img-cep">
             <h4>Composição Familiar</h4>
         </div>
         
-        <div class="container-fluid meu-cep">
-            <button type="button" id="addPessoa" class="btn-busca-cep">Adicionar Membro a Familia</button>
+        <div class="container meu-cep-ad">
+            <button type="button" id="addPessoa" class="btn-busca-cep btn-add"><img src="img/icons8-plus-math-14.png" class="img-buscar">Adicionar Membro a Familia</button>
          </div>       
 
-        <form action="/add" method="POST" id="formFamilia">
-            <div id="dynamicDiv" class="container meu-cep">
+        <div class="container text-center">
+            <form action="/add" method="POST" id="formFamilia">
 
-                <img src="img/icons8-standing-man-64.png" id="man" class="img-man">
+                <div id="dynamicDiv" class="container meu-cep">
 
-                <div class="container" id="titulo-dinamico">
-                    <h5>Membro 1</h5>
-                </div>   
+                    <img src="img/icons8-standing-man-64.png" id="man" class="img-man">
 
-                <div class="row">
-            
-                    <div class="col-md-2">
-                        <label for="nome">Nome Completo</label>
-                    </div>
+                    <div class="container" id="titulo-dinamico">
+                        <div class="text-left">
+                            <h5>Membro 1</h5>
+                        </div>
+                    </div>   
 
-                    <div class="col-md-7">
-                        <input type="text" name="nome" id="nome" class="input-size">
-                    </div>
-                </div> <!-- Fim row-->
+                    <div class="row">
+                
+                        <div class="col-md-2">
+                            <label for="nome">Nome Completo</label>
+                        </div>
 
-                <div class="row">
-                     
-                    <div class="col-md-2">
-                        <label for="salBruto">Salário Bruto (R$)</label>
-                    </div>
+                        <div class="col-md-10">
+                            <input type="text" name="nome" id="nome" class="input-size">
+                        </div>
 
-                    <div class="col-md-3">
-                        <input type="text" name="salBruto" id="salBruto" class="input-size"> 
-                    </div>
+                    </div> <!-- Fim row-->
 
-                    <div class="col-md-3">
-                        <label for="dependente">Quantidade de Dependentes</label>
-                    </div>
+                    <div class="row">
+                        
+                        <div class="col-md-2">
+                            <label for="salBruto">Salário Bruto (R$)<span class="obrigatorio">*</span></label>
+                        </div>
 
-                    <div class="col-md-1">
-                        <input type="text" name="dependente" id="dependente" class="input-size">
-                    </div>
+                        <div class="col-md-3">
+                            <input type="text" name="salBruto" id="salBruto" class="input-size"> 
+                        </div>
 
-                    <div class="col-md-1">
-                        <button type="button" id="remImput" class="btn-busca-cep">Remover</button>
-                    </div>
+                        <div class="col-md-3">
+                            <label for="dependente">Quantidade de Dependentes<span class="obrigatorio">*</span></label>
+                        </div>
 
-                </div><!-- Fim row-->
-            </div> <!-- Fim container dinâmico 1 -->
+                        <div class="col-md-1">
+                            <input type="text" name="dependente" id="dependente" class="input-size">
+                        </div>
 
-            <div class="container div-concluir"> 
-                <button type="button" id="dadosForm" class="btn-busca-cep"><img src="img/icons8-ok-12.png" class="img-buscar">Calcular</button>
-            </div>
+                        <div class="col-md-3">
+                            <div class="text-right">
+                                <button type="button" id="remImput" class="btn-busca-cep">Remover</button>
+                            </div>
+                        </div>
 
-        </form> <!-- Fim container 2 -->
+                    </div><!-- Fim row-->
+
+                </div><!-- Fim container dinâmico 1 -->
+
+            </form> 
+        </div> <!-- Fim container -->
+
+        <div class="container div-concluir"> 
+            <p><small><span class="obrigatorio">*</span> Campos obrigatórios</small></p>
+            <button type="button" id="dadosForm" class="btn-concluir btn-busca-cep"><img src="img/icons8-approval-24.png" class="img-buscar">Calcular</button>
+        </div>
+
     </div>
     <!-- ------------------------------------------------------- -->
     <!--                                   /Formulário da Família-->
 
-    <div id="results" class="container-fluid minha-div-cep">
+    <div id="results" class="container-fluid minha-div-cep text-center">
 
-            <div class="cep-titulo">
-                <img src="img/icons8-hotel-star-30.png" class="img-cep">
-                <h4>Resultado</h4>
-            </div>
-
-            <div class="container meu-cep text-center show">
-                <img src="">
-                <h6 id="results-salarios"></h6>
-
-                <div class="container meu-cep">
-                <p id="results-endereco">A renda foi calculada para os residentes do lar localizado no endereço</p>
-                </div>
-
-                <div class="container meu-cep">
-                    <h6>Resultados Detalhados</h6>
-
-                    <table class="table text-center" id="tabela-dinamina"> 
-                        <tr class="table-success">
-                            <th>#</th>
-                            <th>Nome</th>
-                            <th>Valor da Renda (R$)</th> 
-                            <th>Qtd. Dependentes</th>
-                        </tr>
-                    </table>
-                </div>
-
-            </div>
+        <div class="container cep-titulo">
+            <img src="img/icons8-hotel-star-30.png" class="img-cep">
+            <h4>Resultado</h4>
         </div>
-    </div>
 
+        <div class="container meu-cep show">
+
+            <div id="results-salarios">                
+            </div>
+
+            <div id="results-endereco">               
+            </div>               
+
+            <div class="container meu-cep text-center">
+                <h5>Resultados Detalhados</h5>
+
+                <table class="table text-center" id="tabela-dinamina"> 
+                 
+                    <tr class="table-success">
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>Valor da Renda (R$) per capita</th> 
+                        <th>Qtd. Dependentes</th>
+                    </tr>
+                
+                </table>
+            </div>
+
+        </div> <!-- Fim container -->
+
+    </div> <!-- Fim sessão 3-->
     
     <!-- [CDN] JQuery, AJAX e Bootstrap Efeitos-->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
@@ -209,12 +226,7 @@
     <script src="https://malsup.github.com/jquery.form.js"></script>
 
     <!-- [JS] Autoria-->
-    <!--<script type="text/javascript" src="js/script.js"></script>-->
     <script type="text/javascript" src="js/script.js"></script>
 
 </body>
-
-
-
 </html>
-

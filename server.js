@@ -79,7 +79,7 @@ app.post('/add', function(req, res){
     var soma = 0;
 
     // Soma os valores
-    for (let i = 0; i < salBruto.length; i++){
+    for (var i = 0; i < salBruto.length; i++){
         console.log("Salario "+parseFloat(i+1)+": "+salBruto[i]);
         soma = soma + parseFloat(salBruto[i]);
     }

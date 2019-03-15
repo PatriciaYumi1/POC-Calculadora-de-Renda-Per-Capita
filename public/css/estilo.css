@@ -4,6 +4,12 @@
 
 }
 
+body{
+    background-image: url('../img/circles.png');
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
 /* ---------------------------- Estilos + Navbar*/
 
 .minha-nav h4{
@@ -53,21 +59,21 @@
     color: #FFD57E;
 }
 
-/* ---------------------------- Estilos + Formulário CEP*/
+/* ----------------------------------------- */
 .minha-div-cep{
     display: block;
     margin-bottom: 40px;
     padding: 10px;
-
 }
+
 .cep-titulo{
     display: inline-block;
     margin-bottom: 15px;
+
 }
 
 .img-cep{
     display: inline-block;
-    float: left;
     padding: 0;
     margin: 0;
 }
@@ -80,10 +86,12 @@
 }
 
 .meu-cep{
-    display: block;
+    display: inline-block;
+    background: white;
     margin: 0;
-    padding: 10px;
-    border: 1px black solid;
+    padding: 30px 15px;
+    border-radius: 20px;
+    border: 1px #FFD57E solid;
 }
 
 .meu-cep input[type=text]{
@@ -99,6 +107,7 @@
     text-decoration: none;
     display: inline-block;
     background: #FFD57E;
+    margin: 0;
 }
 
 .btn-busca-cep:hover{
@@ -121,7 +130,6 @@
     display: inline-block;
     margin-top: 15px;
     padding: 0px;
-
 }
 
 .img-man{
@@ -131,9 +139,6 @@
     padding: 0;
 }
 
-#titulo-dinamico h5{
-    margin-left: 80px;
-}
 
 .show{
     display: none;
@@ -144,4 +149,44 @@
     float: right;
     padding-right: 50px; 
     padding-top: 50px;
+}
+
+.meu-cep-ad{
+    display: inline-block;
+    margin: 10px;
+    padding: 0;
+}
+
+.obrigatorio{
+    color: red;
+}
+
+.btn-concluir{
+    border: none;
+    padding: 8px 30px;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background: #FFD57E;
+    margin: 0;
+    font-size: 18px;
+}
+
+.btn-concluir:hover{
+    border: none;
+    font-weight: 600;
+}
+
+.btn-add{
+    padding: 10px;
+}
+
+/* ---------------------------- --------- ID*/
+#id{
+    color: red;
+}
+
+#titulo-dinamico h5{
+    margin-left: 92px;
 }
